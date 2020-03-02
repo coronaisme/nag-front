@@ -3,6 +3,8 @@
 //user greeting button goes to UserInfo.js
 
 //List of restaurant cards in a grid of restaurants within a ~2 mile radius of users signup addess
-//search bar to search for specific (type or name ??) of restaurant
+//search bar will filter the restaurants by search values
 
 //upon clicking a specific restaurant card -> goes to RestaurantInfo.js
+
+

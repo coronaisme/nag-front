@@ -5,28 +5,31 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css"
 
 export default class Login extends Component {
+  
+  handleSignUp = (e) => {
+    e.preventDefault()
+    this.props.history.push('/signup')
+  }
+
+  handleLogin = (e) => {
+    e.preventDefault()
+    //render home page
+  }
 
   render() {
-
     
-
-    function handleSubmit(event) {
-      event.preventDefault();
-      //stuff
-    }
 
 
     return (
       <div className="Login">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleLogin}>
         <FormGroup controlId="username" bsSize="large">
           <ControlLabel>Username: </ControlLabel>
           <FormControl
             autoFocus
             placeholder="username"
             type="username"
-            //value
-            //onChange
+            // value={username}
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
@@ -34,14 +37,19 @@ export default class Login extends Component {
           <FormControl
             placeholder="password"
             type="password"
-            //value
-            //onChange
+            // value={password}
           />
         </FormGroup>
-        <Button block bsSize="large"  type="submit">
+        
+        <Button block bsSize="large"  type="submit" >
           Login
         </Button>
       </form>
+  
+      <Button onClick={this.handleSignUp} block bsSize="large"  type="submit" >
+          SignUp
+        </Button>
+    
       </div>
     )
   }

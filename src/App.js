@@ -3,6 +3,7 @@ import {Switch, Route, Redirect, Link, withRouter} from 'react-router-dom';
 import './App.css';
 import Login from './components/Login/Login.js';
 import HomePage from './components/HomePage/HomePage.js'
+import SignUp from './components/SignUp/SignUp.js'
 import api from "./api.js"
 
 
@@ -50,11 +51,14 @@ class App extends React.Component{
             );
           }} 
           />
-          <Route path='/' render={() => {
+          {/* <Route path='/' render={() => {
             const loggedIn = !!this.state.auth.currentUser.id;
 
             return loggedIn ? <HomePage /> : <Redirect to="/login" />
-          }} />
+          }} /> */}
+          <Route path="/signup" render={(routerProps) => {
+            return <SignUp {...routerProps} />
+          }}/>
           
         </Switch>
       </div>
