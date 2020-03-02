@@ -12,6 +12,7 @@ export default class Login extends Component {
 
     function handleSubmit(event) {
       event.preventDefault();
+      //stuff
     }
 
 
@@ -19,20 +20,22 @@ export default class Login extends Component {
       <div className="Login">
         <form onSubmit={handleSubmit}>
         <FormGroup controlId="username" bsSize="large">
-          <ControlLabel>Username</ControlLabel>
+          <ControlLabel>Username: </ControlLabel>
           <FormControl
             autoFocus
+            placeholder="username"
             type="username"
-            value={"username"}
+            //value
             //onChange
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <ControlLabel>Password</ControlLabel>
+          <ControlLabel>Password: </ControlLabel>
           <FormControl
-            value={"password"}
-            //onChange
+            placeholder="password"
             type="password"
+            //value
+            //onChange
           />
         </FormGroup>
         <Button block bsSize="large"  type="submit">
