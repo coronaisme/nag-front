@@ -9,8 +9,20 @@ export default class SignUp extends Component {
 
   handleSubmit = (e) => {
     
-    
-  }
+      e.preventDefault()
+      debugger
+      var data = {name:e.target.username.value , email: e.target.email.value, address_one: e.target.address_1.value, address_two: e.target.address_2.value, city: e.target.city.value, state: e.target.state.value, zipcode: e.target.zipcode.value, password:e.target.password.value }
+      fetch("http://localhost:3000/new",
+      {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json',Accept: 'application/json',Authorization: ""},
+        body: JSON.stringify(data)
+      })
+      .then(resp => resp.json())
+      .then(dataz => console.log(dataz))
+      
+    }
+  
 
   render() {
 
