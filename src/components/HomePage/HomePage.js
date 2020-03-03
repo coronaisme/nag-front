@@ -8,6 +8,8 @@
 //upon clicking a specific restaurant card -> goes to RestaurantInfo.js
 
 import React, {Component} from 'react';
+import './HomePage.css'
+import { Card } from 'semantic-ui-react'
 
 
 export default class HomePage extends Component {
@@ -22,8 +24,13 @@ export default class HomePage extends Component {
 
   render() {
     return(
-      <div>
-        Home page
+      <div className="HomePage">
+
+        <p className="current_userName">Hello, {this.props.current_user.username}</p> 
+        <Card.Group itemsPerRow={4}>
+          {/* render a bunch of restaurants */}
+        </Card.Group>
+
       </div>
     )
   }

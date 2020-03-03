@@ -40,6 +40,7 @@ class App extends React.Component{
     localStorage.removeItem('token');
     this.setState({ auth: { currentUser: {} } });
   };
+  
 
   render() {
     return (
@@ -58,7 +59,7 @@ class App extends React.Component{
           <Route path='/' render={(routerProps) => {
             const loggedIn = !!this.state.auth.currentUser.id;
 
-            return loggedIn ? <HomePage {...routerProps} /> : <Redirect to="/login" />
+            return loggedIn ? <HomePage {...routerProps} current_user={this.state.auth.currentUser} /> : <Redirect to="/login" />
           }} />
 
         </Switch>

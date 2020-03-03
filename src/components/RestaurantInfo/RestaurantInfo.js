@@ -6,3 +6,24 @@
   //upon click -> takes user to SelectedDishInfo
 
 //should have button to go back to home/logout/user....maybe a navbar would be the way to go...
+
+import React, { Component } from 'react'
+import { Card } from 'semantic-ui-react'
+
+export default class RestaurantInfo extends Component {
+  render() {
+    return (
+      <Card>
+        <div>
+          <div className="restaurant image">
+            {/* <img src={} />*/}
+          </div>
+          <div className="content">
+             {/* <div className="header">{ restaurant name }</div> */}
+             {/* type of food? address? */}
+          </div>
+        </div>
+      </Card>
+    )
+  }
+}

@@ -7,6 +7,10 @@ import "./SignUp.css"
 
 export default class SignUp extends Component {
 
+
+
+
+
   handleSubmit = (e) => {
     
       e.preventDefault()
@@ -20,8 +24,12 @@ export default class SignUp extends Component {
         body: JSON.stringify(data)
       })
       .then(resp => resp.json())
-      .then(dataz => console.log(dataz))
-      
+      .then(dataz => {
+        if(dataz.token) {
+          this.props.history.push('/login')
+        } 
+      })
+     
     }
   
 
@@ -118,7 +126,7 @@ export default class SignUp extends Component {
         <Button block bsSize="large"  type="submit" >
           SignUp
         </Button>
-
+        <p>Upon succesful sign up you will be prompted to Login with your username and password</p>
         </form>
       </div>
     )

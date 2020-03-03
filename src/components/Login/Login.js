@@ -52,7 +52,7 @@ handleSubmit = e => {
 
     return (
       <div>
-        {this.state.error ? <h1>Try Again</h1> : null}
+        {this.state.error ? <h1>Invalid</h1> : null}
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
             <div className="ui field">
@@ -74,10 +74,10 @@ handleSubmit = e => {
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" className="ui basic green button">
+            <button type="submit" className="ui login button">
               Login
             </button>
-            <button onClick={this.handleSignUp} type="submit" className="ui basic green button">
+            <button onClick={this.handleSignUp} type="submit" className="ui signup button">
               SignUp
             </button>
           </form>
