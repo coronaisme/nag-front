@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import HomePage from '../HomePage/HomePage.js';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./SignUp.css"
-import { queryByDisplayValue } from '@testing-library/react';
+// import { queryByDisplayValue } from '@testing-library/react';
 
 export default class SignUp extends Component {
 

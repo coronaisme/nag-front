@@ -1,4 +1,4 @@
-const API = `http://localhost:3000/`
+const API = `http://localhost:3000`
 
 const token = localStorage.getItem('token')
 
@@ -17,13 +17,13 @@ const login = (username, password) => {
     method: 'POST',
     headers: headers,
     body: JSON.stringify({
-      username:"nick", password:"password"
+      username, password
     })
   }).then(res => res.json());
 };
 
 const getCurrentUser = () => {
-  return fetch(`${API}/users`, {
+  return fetch(`${API}/current_user`, {
     headers: headers
   }).then(res => res.json());
 };

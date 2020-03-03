@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Redirect, Link, withRouter} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import './App.css';
 import Login from './components/Login/Login.js';
 import HomePage from './components/HomePage/HomePage.js'
@@ -45,21 +45,22 @@ class App extends React.Component{
     return (
       <div className="App">
         <Switch>
-          <Route path="/login" render={routerProps => {
-            return (
-              <Login {...routerProps} handleLogin={this.handleLogin} />
-            );
-          }} 
-          />
-          {/* <Route path='/' render={() => {
-            const loggedIn = !!this.state.auth.currentUser.id;
 
-            return loggedIn ? <HomePage /> : <Redirect to="/login" />
-          }} /> */}
+          <Route path="/login" render={routerProps => {
+            return (<Login {...routerProps} handleLogin={this.handleLogin} />);
+          }} />
+
           <Route path="/signup" render={(routerProps) => {
             return <SignUp {...routerProps} />
           }}/>
-          
+
+
+          <Route path='/' render={(routerProps) => {
+            const loggedIn = !!this.state.auth.currentUser.id;
+
+            return loggedIn ? <HomePage {...routerProps} /> : <Redirect to="/login" />
+          }} />
+
         </Switch>
       </div>
     );
