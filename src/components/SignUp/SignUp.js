@@ -10,7 +10,8 @@ export default class SignUp extends Component {
   handleSubmit = (e) => {
     
       e.preventDefault()
-      debugger
+      e.persist()
+
       var data = {name:e.target.username.value , email: e.target.email.value, address_one: e.target.address_1.value, address_two: e.target.address_2.value, city: e.target.city.value, state: e.target.state.value, zipcode: e.target.zipcode.value, password:e.target.password.value }
       fetch("http://localhost:3000/new",
       {
@@ -114,7 +115,7 @@ export default class SignUp extends Component {
           />
         </FormGroup> 
         <br/>
-        <Button onClick={this.handleSubmit} block bsSize="large"  type="submit" >
+        <Button block bsSize="large"  type="submit" >
           SignUp
         </Button>
 
