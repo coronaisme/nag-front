@@ -10,11 +10,14 @@
 import React, {Component} from 'react';
 import './HomePage.css'
 import { Card } from 'semantic-ui-react'
+import data from '../../SampleSearchByZipcode'
+import RestaurantInfo from '../RestaurantInfo/RestaurantInfo'
 
 
 export default class HomePage extends Component {
 
   componentDidMount() {
+    
     const token = localStorage.getItem('token');
     if (!token) {
       this.props.history.push('/login');
@@ -23,12 +26,16 @@ export default class HomePage extends Component {
 
 
   render() {
+
+    
+
     return(
       <div className="HomePage">
 
         <p className="current_userName">Hello, {this.props.current_user.username}</p> 
         <Card.Group itemsPerRow={4}>
-          {/* render a bunch of restaurants */}
+        {data.result.data.map(r => <RestaurantInfo key={r.restaurant_id} restaurant={r} />)}
+        {console.log(data.result.data)}
         </Card.Group>
 
       </div>

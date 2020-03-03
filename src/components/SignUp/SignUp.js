@@ -27,7 +27,7 @@ export default class SignUp extends Component {
       .then(dataz => {
         if(dataz.token) {
           this.props.history.push('/login')
-        } 
+        }
       })
      
     }
