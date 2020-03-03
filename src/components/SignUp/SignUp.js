@@ -7,7 +7,8 @@ import "./SignUp.css"
 export default class SignUp extends Component {
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    
+    
   }
 
   render() {
@@ -92,10 +93,17 @@ export default class SignUp extends Component {
           <FormControl
             autoFocus
             placeholder="zipcode"
-            type="zipcode"
+            type="tel"
+            maxLength="5"
+            charSet="0123456789"
+           
             // value={username}
           />
         </FormGroup> 
+        <br/>
+        <Button onClick={this.handleSubmit} block bsSize="large"  type="submit" >
+          SignUp
+        </Button>
 
         </form>
       </div>
