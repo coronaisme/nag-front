@@ -1,3 +1,4 @@
+export default
 {
     "result": {
         "totalResults": 137,

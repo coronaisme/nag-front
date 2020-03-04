@@ -52,12 +52,10 @@ export default class HomePage extends Component {
       <div className="HomePage">
 
         <h2 className="current_userName">Hello, {this.props.current_user.username}</h2> 
-        <Card.Group itemsPerRow={4}>
-
+        <Card.Group centered itemsPerRow={4}>
         {this.state.restaurant ? <SingleRestaurant restaurant={this.state.restaurant} onBackButtonClick={this.onBackButtonClick}/>
           :
         data.result.data.map(r => <RestaurantInfo key={r.restaurant_id} restaurant={r} onRestaurantClick={this.onRestaurantClick} />)}
-        {console.log(data.result.data)}
         </Card.Group>
 
       </div>

@@ -1,6 +1,6 @@
 //sign up form -> goes to HomePage
 import React, {Component} from 'react';
-import HomePage from '../HomePage/HomePage.js';
+// import HomePage from '../HomePage/HomePage.js';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./SignUp.css"
 // import { queryByDisplayValue } from '@testing-library/react';
