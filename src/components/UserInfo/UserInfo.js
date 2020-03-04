@@ -6,9 +6,14 @@ import React from 'react';
 
 class UserInfo extends React.Component
 {   
-    state = { user_details: {},user_cards: null}
+    state = { 
+      user_details: {},
+      user_cards: null
+    }
+
     componentDidMount()
     {
+      
         const token = localStorage.getItem('token')
         if (token)
         {
@@ -16,7 +21,7 @@ class UserInfo extends React.Component
             {headers:{ 'Content-Type': 'application/json',Accept: 'application/json',Authorization: token}})
             .then(resp => resp.json())
             .then(data => 
-                 this.setState({ user_details:data.user_details, user_cards: data.cards }))
+                 this.setState({ user_details:data.user_details, user_cards: data.cards }, () => console.log(this.state)))
         }
         else { this.props.history.push('/login'); }
     }
@@ -24,6 +29,7 @@ class UserInfo extends React.Component
     {   
         const user_details = this.state.user_details
         const cards = this.state.user_cards
+
         return(
             <div> 
                 <h2>Manage profile</h2>
@@ -46,7 +52,6 @@ class UserInfo extends React.Component
                         Card Type : {cards[0].card_type}<br/>
                     </h5>
                 </div>}
-                <h6 style={{color:"red"}}>Click on 'My Profile to move back'</h6>
              </div>
         )
     }

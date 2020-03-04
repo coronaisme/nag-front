@@ -59,7 +59,7 @@ export default class HomePage extends Component {
       <div className="HomePage">
 
         <p className="current_userName">Hello, {this.props.current_user.username}</p> 
-        <p onClick={this.handleClick} style={{cursor:"pointer"}}>My Profile</p>
+        <p onClick={this.handleClick} style={{cursor:"pointer"}}>{this.state.myprofile ? "All Restaurants" : "My Profile"}</p>
         {
         this.state.myprofile ?
         <UserInfo current_user={this.props.current_user}/>
