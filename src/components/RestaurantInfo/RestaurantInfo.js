@@ -19,7 +19,7 @@ export default class RestaurantInfo extends Component {
 
     return (
       <Card>
-        <div className="ui card" key={restaurant.restaurant_id} onClick={() => this.props.onRestaurantClick(restaurant)}>
+        <div className="ui centered card" key={restaurant.restaurant_id} onClick={() => this.props.onRestaurantClick(restaurant)}>
           <div className="restaurant image">
             <img src={'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.eatouteatwell.com%2Fwp-content%2Fuploads%2F2014%2F01%2Frestaurant-front.jpg&f=1&nofb=1'} alt="restaurant img" height="200" width="200"/>
           </div>
