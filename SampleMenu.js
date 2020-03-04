@@ -32,7 +32,7 @@
                 "restaurant_phone": "(510) 735-9439",
                 "subsection": "Beverages",
                 "subsection_description": " "
-            },
+            },1
             {
                 "address": {
                     "city": "Emeryville",
