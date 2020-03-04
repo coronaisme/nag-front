@@ -13,7 +13,7 @@ import { Card } from 'semantic-ui-react'
 import data from '../../SampleSearchByZipcode'
 import RestaurantInfo from '../RestaurantInfo/RestaurantInfo'
 import UserInfo from '../UserInfo/UserInfo'
-
+import SingleRestaurant from '../SingleRestaurant/SingleRestaurant'
 
 export default class HomePage extends Component {
 
@@ -25,16 +25,36 @@ export default class HomePage extends Component {
       this.props.history.push('/login');
     }
   }
+  
+  state = {
+    restaurant: null
+  }
 
   handleClick = () => {
     this.setState(prevState => ({myprofile:!prevState.myprofile}))
   }
 
 
+
+  onRestaurantClick = (restaurant) => {
+    this.setState(previousState => {
+      return {
+        ...previousState,
+        restaurant: restaurant
+      }
+    })
+  }
+
+  onBackButtonClick = () => {
+		this.setState(previousState => {
+			return {
+				...previousState,
+				restaurant: null
+			}
+		})
+	}
+
   render() {
-
-    
-
     return(
       <div className="HomePage">
 
@@ -45,7 +65,10 @@ export default class HomePage extends Component {
         <UserInfo current_user={this.props.current_user}/>
         :
         <Card.Group itemsPerRow={4}>
-        {data.result.data.map(r => <RestaurantInfo key={r.restaurant_id} restaurant={r} />)}
+
+        {this.state.restaurant ? <SingleRestaurant restaurant={this.state.restaurant} onBackButtonClick={this.onBackButtonClick}/>
+          :
+        data.result.data.map(r => <RestaurantInfo key={r.restaurant_id} restaurant={r} onRestaurantClick={this.onRestaurantClick} />)}
         {console.log(data.result.data)}
         </Card.Group>
         }
