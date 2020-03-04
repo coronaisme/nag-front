@@ -51,7 +51,7 @@ handleSubmit = e => {
 
 
     return (
-      <div>
+      <div className="LoginContainer">
         {this.state.error ? <h1>Invalid</h1> : null}
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
