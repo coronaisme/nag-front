@@ -26,7 +26,7 @@ handleSubmit = e => {
 
   api.auth
     .login(this.state.fields.username, this.state.fields.password)
-    .then(res => {
+    .then(res => { 
       if(res.error) {
         this.setState({
           error: true
