@@ -1,11 +1,13 @@
-//Login / signup page -> goes to either SignUp page or HomePage
+
+
 
 import React, {Component} from 'react';
 import "./Login.css"
 import api from "../../api.js"
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 export default class Login extends Component {
-
+  
   state = {
     error: false,
     fields: {
@@ -13,7 +15,7 @@ export default class Login extends Component {
       password: ""
     }
   }
-
+  
   handleChange = (e) => {
     const newFields = { ...this.state.fields, [e.target.name]: e.target.value}
     this.setState({
@@ -21,9 +23,9 @@ export default class Login extends Component {
     })
   }
 
-handleSubmit = e => {
+  handleSubmit = e => {
   e.preventDefault()
-
+  
   api.auth
     .login(this.state.fields.username, this.state.fields.password)
     .then(res => { 
@@ -37,57 +39,52 @@ handleSubmit = e => {
       }
     })
 
-}
+  }
   
   handleSignUp = (e) => {
     e.preventDefault()
     this.props.history.push('/signup')
   }
 
- 
-
+  
+  
   render() {
     const { fields } = this.state
-
-
-//     <div class="ui input focus">
-//   <input type="text" placeholder="Search...">
-// </div>
-
+    
     return (
-      <div className="LoginContainer">
-        {this.state.error ? <h1>Invalid</h1> : null}
-        <div className="ui form">
-          <form onSubmit={this.handleSubmit}>
-            <div className="ui field ">
-              <label>Username: </label>
-              <input
-                name="username"
-                placeholder="username"
-                value={fields.username}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="ui field">
-              <label>Password: </label>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                value={fields.password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <button type="submit" className="ui login button">
-              Login
-            </button>
-            <button onClick={this.handleSignUp} type="submit" className="ui signup button">
-              SignUp
-            </button>
-          </form>
-        </div>
-      </div>
-    )
-  }
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      {this.state.error ? <h1>Invalid</h1> : null}
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='marine blue' textAlign='center'>
+        Log-in to your account
+      </Header>
+      <Form size='large' onSubmit={this.handleSubmit}>
+        <Segment stacked>
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' name="username"  value={fields.username}
+        onChange={this.handleChange}/>
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={fields.password}
+            onChange={this.handleChange}
+            />
+
+          <Button color='marine blue' fluid size='large'>
+            Login
+          </Button>
+        </Segment>
+      </Form>
+      <Message onClick={this.handleSignUp} fluid style={{cursor:"pointer"}}>
+       Sign Up
+      </Message>
+    </Grid.Column>
+  </Grid>
+  )
+}
+
 
 }
