@@ -54,8 +54,8 @@ export default class Login extends Component {
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
-      {this.state.error ? <Header as="h2" color="marine blue" textAlign="center">Invalid</Header> : null}
-      <Header as='h2' color='marine blue' textAlign='center'>
+      {this.state.error ? <Header as="h2" color="blue" textAlign="center">Invalid</Header> : null}
+      <Header as='h2' color='blue' textAlign='center'>
         Log-in to your account
       </Header>
       <Form size='large' onSubmit={this.handleSubmit}>
@@ -73,12 +73,12 @@ export default class Login extends Component {
             onChange={this.handleChange}
             />
 
-          <Button color='marine blue' fluid size='large'>
+          <Button color='blue' fluid size='large'>
             Login
           </Button>
         </Segment>
       </Form>
-      <Message onClick={this.handleSignUp} fluid style={{cursor:"pointer"}}>
+      <Message onClick={this.handleSignUp} fluid="true" style={{cursor:"pointer"}}>
        Sign Up
       </Message>
     </Grid.Column>

@@ -62,13 +62,13 @@ export default class UserCart extends React.Component
                 {this.state.item.map(singleitem => {
                     return (<tr>
                        <td> <input type="number" placeholder={singleitem.qty} onChange={this.handleChange} name={singleitem.name}/></td>
-                       <td>{singleitem.name} </td>
-                    <td>{singleitem.single_price}</td>
-                    <td>{(singleitem.item_price)}</td>
+                       <td>{singleitem.name}: </td>
+                    <td>order/$ {singleitem.single_price.toFixed(2)}</td>
+                    <td>total/$ {singleitem.item_price.toFixed(2)}</td>
                     </tr>)
                 })}
                 </tbody></table>
-                GRAND TOTAL = ${(this.state.total)}
+                GRAND TOTAL = ${this.state.total}
             </div>
         )
     }

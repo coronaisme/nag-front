@@ -9,7 +9,7 @@
 
 import React, {Component} from 'react';
 import './HomePage.css'
-import { Card } from 'semantic-ui-react'
+import { Card, Header, Segment } from 'semantic-ui-react'
 import data from '../../SampleSearchByZipcode'
 import RestaurantInfo from '../RestaurantInfo/RestaurantInfo'
 import UserInfo from '../UserInfo/UserInfo'
@@ -53,8 +53,15 @@ export default class HomePage extends Component {
   render() {
     return(
       <div className="HomePage">
-        <p className="current_userName">Hello, {this.props.current_user.username}</p> 
-        <p onClick={this.handleClick} style={{cursor:"pointer"}}>{(this.state.myprofile) ? "All Restaurants" : "My Profile"}</p>
+        <br/>
+        <Header as='h2' color='blue' textAlign='center'>Hello {this.props.current_user.username}</Header>   
+        <br/>
+        <div className="segment" >
+        <Segment  circular onClick={this.handleClick} style={{cursor:"pointer"}} >
+        <i className="icon large hand point up"  style={{cursor:"pointer"}}/> <br/>{(this.state.myprofile) ? "All Restaurants" : "My Profile"}
+        </Segment>
+        </div>
+        <br/>
         {
         this.state.myprofile ?
         <UserInfo current_user={this.props.current_user}/>
