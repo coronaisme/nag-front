@@ -10,8 +10,6 @@ export default class SingleRestaurant extends Component {
     showCart:false 
   }
 
- 
-
   render() {
     
     const { restaurant } = this.props
@@ -21,7 +19,6 @@ export default class SingleRestaurant extends Component {
       <div>
       {this.state.showCart ? <UserCart cart={this.state.cart}/> :
       <div className="ui segment centered">
-         
       <div className="ui two column centered grid">
         <div className="row">
           <div className="four wide column">

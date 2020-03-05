@@ -56,7 +56,6 @@ export default class UserCart extends React.Component
 
     render()
     {
-       
         return(
             <div> 
                 <table> <th><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></th><tbody>
