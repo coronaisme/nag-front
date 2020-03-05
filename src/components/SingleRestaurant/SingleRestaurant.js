@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import menuData from '../../SampleMenu'
 import "./SingleRestaurant.css"
+import UserCart from "../UserCart/UserCart"
 
 
 export default class SingleRestaurant extends Component {
 
   state = {
     cart:[],
-    checked:false
   }
 
  
@@ -75,7 +75,7 @@ export default class SingleRestaurant extends Component {
           // {this.setState({dish.menu_item_name:false})}
          return <ul className="menuItem" key={dish.item_id}>         
                {/* <input type="checkbox" checked={this.state.isChecked} onClick={this.addCart} value={`[{0:${dish.menu_item_name}},{1:${dish.menu_item_description}},{2:${dish.menu_item_pricing[0].priceString}}]`}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString}  */}
-               <input type="checkbox" value={this.state.checked}  onClick={this.addCart} onChange={this.handleCheck}
+               <input type="checkbox"   onClick={this.addCart} 
                name={[dish.menu_item_name,dish.menu_item_description,dish.menu_item_pricing[0].priceString]}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString} 
                 <br/>     
                 </ul>
@@ -88,22 +88,13 @@ export default class SingleRestaurant extends Component {
     )
   }
 
-  handleSubmit()
-  {
-    console.log("Inside submit")
-    
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.history.push('/cart')
   }
 
-  handleCheck = (e) => {
-    e.persist()
-    console.log(e.target)
-    this.setState(previousState => {
-      return {
-        ...previousState,
-        checked: !previousState.checked
-      }
-    })
-  }
+
+  
 
   addCart = (e) =>
   {

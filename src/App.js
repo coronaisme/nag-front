@@ -5,6 +5,8 @@ import Login from './components/Login/Login.js';
 import HomePage from './components/HomePage/HomePage.js'
 import SignUp from './components/SignUp/SignUp.js'
 import api from "./api.js"
+import UserCart from './components/UserCart/UserCart'
+import SingleRestaurant from './components?'
 
 
 
@@ -54,6 +56,14 @@ class App extends React.Component{
           <Route path="/signup" render={(routerProps) => {
             return <SignUp {...routerProps} />
           }}/>
+
+          <Route path="/cart" render={(routerProps) => {
+            return <UserCart {...routerProps} />
+          }}/>
+
+          <Route path="/restaurant" render={(routerProps) => {
+            return <SingleRestaurant {...routerProps}/>
+          }} />
 
 
           <Route path='/' render={(routerProps) => {
