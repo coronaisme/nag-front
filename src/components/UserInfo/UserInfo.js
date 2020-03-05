@@ -6,10 +6,7 @@ import React from 'react';
 
 class UserInfo extends React.Component
 {   
-    state = { 
-      user_details: {},
-      user_cards: null
-    }
+    state = { user_details: {}}
 
     componentDidMount()
     {
@@ -21,7 +18,7 @@ class UserInfo extends React.Component
             {headers:{ 'Content-Type': 'application/json',Accept: 'application/json',Authorization: token}})
             .then(resp => resp.json())
             .then(data => 
-                 this.setState({ user_details:data.user_details, user_cards: data.cards }, () => console.log(this.state)))
+                 this.setState({ user_details:data.user_details, user_cards: data.cards, user_orders: data.orders }, () => console.log(this.state)))
         }
         else { this.props.history.push('/login'); }
     }
@@ -51,6 +48,17 @@ class UserInfo extends React.Component
                         Card Number : ****  ****  **** {cards[0].card_grid4}<br/>
                         Card Type : {cards[0].card_type}<br/>
                     </h5>
+                </div>}
+                {this.state.user_orders &&  
+                <div> 
+                    <h2>Past orders</h2>
+                    {this.state.user_orders.map(order => {
+                        return <div>
+                        <h5> Order Status : {order.status}<br/>
+                             Delivered to : {order.delivery_address}<br/>
+                             Amount Paid : {order.fee}<br/>
+                        </h5></div>
+                    })}
                 </div>}
              </div>
         )
