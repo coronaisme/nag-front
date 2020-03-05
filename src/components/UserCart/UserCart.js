@@ -8,45 +8,44 @@ import React from 'react';
 
 export default class UserCart extends React.Component
 {
-    handleChange = () => {
-        debugger
+    state = {total:null,item:[]}
+
+    componentDidMount()
+    {
+        if(this.props.cart.length > 0)
+        {
+            this.props.cart.map(item => {
+                // var qty = 1;
+                var name = item.split(",")[0]
+                var price = parseFloat(item.split(",")[item.split(",").length-1].slice(1))
+                // let string_price = item.split(",")[item.split(",").length-1]
+                // var item_total = ;
+                var item_details = {qty:1,name:name,price:price}
+                this.setState(prevState => ({...prevState,item:prevState.item.concat(item_details)}))
+                return null
+                })
+        }
     }
 
     render()
     {
         return(
             <div>
-                <br/>
-                <form>
-                {this.props.cart.length > 0 ? 
-                
-                    this.props.cart.map(item => {
-                    console.log(item)
-                    let items = item.split(',')
-                    var name = items[0]
-                    let stringPrice = items[items.length - 1]
-                    var price = items[items.length - 1].slice(1)
-                    let betterPrice = parseFloat(price)
-                    console.log(betterPrice, price, name)
-
-                   
-                    return (
-                    <div key={Math.random()}>
-                   
-                    <ul key={Math.random()}><input type="number" onChange={this.handleChange}></input> {name} : {stringPrice}</ul>
-
-                    </div>
-                    )
-                })
-                
-                :
-                <div>
-                Your Cart is Empty. 
-                </div>
-                }
-                </form>
+                <table> <th><td>Quantity</td><td>Item Name</td><td>Price</td></th><tbody>
+                {this.state.item.map(singleitem => {
+                    return (<tr>
+                       <td> <input type="number" value={singleitem.qty} on={this.handleChange} /></td>
+                       <td>{singleitem.name} </td>
+                    <td>{singleitem.price}</td>
+                    </tr>)
+                })}
+                </tbody></table>
             </div>
         )
+    }
+
+    handleChange = () => {
+        debugger
     }
 }
 
