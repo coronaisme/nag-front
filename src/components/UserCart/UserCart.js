@@ -57,7 +57,6 @@ export default class UserCart extends React.Component
     
     render()
     {
-       
         return(
             <div> 
                 <table> <thead><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></thead><tbody>
@@ -69,11 +68,8 @@ export default class UserCart extends React.Component
                     <td>total/$ {singleitem.item_price.toFixed(2)}</td>
                     </tr>)
                 })}
-              
                 </tbody></table>
-                
                 GRAND TOTAL = ${this.state.total}
-                
             </div>
         )
     }
