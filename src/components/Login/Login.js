@@ -50,12 +50,16 @@ handleSubmit = e => {
     const { fields } = this.state
 
 
+//     <div class="ui input focus">
+//   <input type="text" placeholder="Search...">
+// </div>
+
     return (
       <div>
         {this.state.error ? <h1>Invalid</h1> : null}
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
-            <div className="ui field">
+            <div className="ui field ">
               <label>Username: </label>
               <input
                 name="username"
