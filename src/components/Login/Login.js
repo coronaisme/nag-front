@@ -53,8 +53,8 @@ export default class Login extends Component {
     
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-      {this.state.error ? <h1>Invalid</h1> : null}
     <Grid.Column style={{ maxWidth: 450 }}>
+      {this.state.error ? <Header as="h2" color="marine blue" textAlign="center">Invalid</Header> : null}
       <Header as='h2' color='marine blue' textAlign='center'>
         Log-in to your account
       </Header>
