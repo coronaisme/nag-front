@@ -63,11 +63,11 @@ export default class UserCart extends React.Component
                        <td> <input type="number" placeholder={singleitem.qty} onChange={this.handleChange} name={singleitem.name}/></td>
                        <td>{singleitem.name} </td>
                     <td>{singleitem.single_price}</td>
-                    <td>{singleitem.item_price}</td>
+                    <td>{Math.round(singleitem.item_price)}</td>
                     </tr>)
                 })}
                 </tbody></table>
-                GRAND TOTAL = {this.state.total}
+                GRAND TOTAL = ${Math.round(this.state.total)}
             </div>
         )
     }
