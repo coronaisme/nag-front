@@ -1,3 +1,13 @@
 .qtyInput {
   width:35px
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead, td {
+  text-align: justify;
+  padding: 8px;
+}
