@@ -17,7 +17,9 @@ export default class SingleRestaurant extends Component {
 
     return (
       <div>
-      {this.state.showCart ? <UserCart cart={this.state.cart}/> :
+      {this.state.showCart ? 
+      ( this.state.cart.length > 0 ?  <UserCart cart={this.state.cart}/> :  this.setState(prevState => ({...prevState,showCart:!prevState.showCart})) )
+      :
       <div className="ui segment centered">
       <div className="ui two column centered grid">
         <div className="row">
@@ -64,6 +66,7 @@ export default class SingleRestaurant extends Component {
         <input type="submit" value="Add to Cart"/>
         </form>
       </div> 
+      Total items in the cart: {this.state.cart.length}
       </div>}
       </div>
     )

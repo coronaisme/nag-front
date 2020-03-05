@@ -59,7 +59,7 @@ export default class UserCart extends React.Component
        
         return(
             <div> 
-                <table> <th><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></th><tbody>
+                <table> <thead><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></thead><tbody>
                 {this.state.item.map(singleitem => {
                     return (<tr>
                        <td> <input type="number" placeholder={singleitem.qty} onChange={this.handleChange} name={singleitem.name}/></td>
