@@ -53,9 +53,11 @@ export default class UserCart extends React.Component
         })
         this.setState(prevState => ({...prevState,item:changed_item,total:tot}))
     }
-
+    
     render()
     {
+        // const grandTotal = this.state.total
+        // const betterTotal = grandTotal.toFixed(2)
         return(
             <div> 
                 <table> <th><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></th><tbody>
@@ -68,7 +70,9 @@ export default class UserCart extends React.Component
                     </tr>)
                 })}
                 </tbody></table>
-                GRAND TOTAL = {this.state.total.toFixed(2)}
+                
+                GRAND TOTAL = {this.state.total}
+                
             </div>
         )
     }
