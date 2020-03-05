@@ -1,18 +1,19 @@
-fetch("https://us-restaurant-menus.p.rapidapi.com/restaurants/zip_code/94104?page=2", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "us-restaurant-menus.p.rapidapi.com",
-		"x-rapidapi-key": "8d745e65dcmsh12b93a292d573cdp1afde5jsnef2ba2a24071"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.log(err);
-});
+// fetch("https://us-restaurant-menus.p.rapidapi.com/restaurants/zip_code/94104?page=2", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "us-restaurant-menus.p.rapidapi.com",
+// 		"x-rapidapi-key": "8d745e65dcmsh12b93a292d573cdp1afde5jsnef2ba2a24071"
+// 	}
+// })
+// .then(response => {
+// 	console.log(response);
+// })
+// .catch(err => {
+// 	console.log(err);
+// });
 
-
+export default
+               
 {
     "result": {
         "totalResults": 135,
