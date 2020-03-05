@@ -26,9 +26,7 @@ export default class HomePage extends Component {
     }
   }
   
-  state = {
-    restaurant: null
-  }
+  state = { restaurant: null }
 
   handleClick = () => {
     this.setState(prevState => ({myprofile:!prevState.myprofile}))
@@ -55,7 +53,6 @@ export default class HomePage extends Component {
   render() {
     return(
       <div className="HomePage">
-
         <p className="current_userName">Hello, {this.props.current_user.username}</p> 
         <p onClick={this.handleClick} style={{cursor:"pointer"}}>{(this.state.myprofile) ? "All Restaurants" : "My Profile"}</p>
         {

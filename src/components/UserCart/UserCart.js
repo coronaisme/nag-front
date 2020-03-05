@@ -21,7 +21,7 @@ export default class UserCart extends React.Component
                 tot += price
                 this.setState(prevState => ({...prevState,item:prevState.item.concat(item_details),total:tot}))
                 return null
-                })
+            })
         }
     }
 
@@ -55,7 +55,6 @@ export default class UserCart extends React.Component
 
     render()
     {
-       
         return(
             <div> 
                 <table> <th><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></th><tbody>
