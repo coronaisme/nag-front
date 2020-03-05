@@ -8,20 +8,35 @@ import React from 'react';
 
 export default class UserCart extends React.Component
 {
+    handleChange = () => {
+        debugger
+    }
+
     render()
     {
         return(
             <div>
-
+                <br/>
+                <form>
                 {this.props.cart.length > 0 ? 
                 
                     this.props.cart.map(item => {
                     console.log(item)
-                    var name = item.split(",")[0]
-                    var price =item[item.split(",").length -1]
-                    debugger
-                    // return <input type="number"/>  <p>{name }</p>
-                    console.log(name,price)
+                    let items = item.split(',')
+                    var name = items[0]
+                    let stringPrice = items[items.length - 1]
+                    var price = items[items.length - 1].slice(1)
+                    let betterPrice = parseFloat(price)
+                    console.log(betterPrice, price, name)
+
+                   
+                    return (
+                    <div key={Math.random()}>
+                   
+                    <ul key={Math.random()}><input type="number" onChange={this.handleChange}></input> {name} : {stringPrice}</ul>
+
+                    </div>
+                    )
                 })
                 
                 :
@@ -29,6 +44,7 @@ export default class UserCart extends React.Component
                 Your Cart is Empty. 
                 </div>
                 }
+                </form>
             </div>
         )
     }
