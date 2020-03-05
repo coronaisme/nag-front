@@ -34,8 +34,6 @@ export default class HomePage extends Component {
     this.setState(prevState => ({myprofile:!prevState.myprofile}))
   }
 
-
-
   onRestaurantClick = (restaurant) => {
     this.setState(previousState => {
       return {
