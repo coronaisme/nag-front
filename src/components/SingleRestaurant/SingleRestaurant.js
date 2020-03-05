@@ -5,7 +5,10 @@ import "./SingleRestaurant.css"
 
 export default class SingleRestaurant extends Component {
 
-  state = {cart:[]}
+  state = {
+    cart:[],
+    checked:false
+  }
 
  
 
@@ -72,8 +75,8 @@ export default class SingleRestaurant extends Component {
           // {this.setState({dish.menu_item_name:false})}
          return <ul className="menuItem" key={dish.item_id}>         
                {/* <input type="checkbox" checked={this.state.isChecked} onClick={this.addCart} value={`[{0:${dish.menu_item_name}},{1:${dish.menu_item_description}},{2:${dish.menu_item_pricing[0].priceString}}]`}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString}  */}
-               <input type="checkbox" name={dish.item_id} onClick={this.addCart} 
-               value={[dish.menu_item_name,dish.menu_item_description,dish.menu_item_pricing[0].priceString]}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString} 
+               <input type="checkbox" value={this.state.checked}  onClick={this.addCart} onChange={this.handleCheck}
+               name={[dish.menu_item_name,dish.menu_item_description,dish.menu_item_pricing[0].priceString]}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString} 
                 <br/>     
                 </ul>
                 
@@ -88,12 +91,23 @@ export default class SingleRestaurant extends Component {
   handleSubmit()
   {
     console.log("Inside submit")
-    debugger
+    
+  }
+
+  handleCheck = (e) => {
+    e.persist()
+    console.log(e.target)
+    this.setState(previousState => {
+      return {
+        ...previousState,
+        checked: !previousState.checked
+      }
+    })
   }
 
   addCart = (e) =>
   {
-    debugger
+   
     e.persist();
     // this.setState(prevState => ({...prevState,isChecked:!prevState.isChecked}))
     // this.setState({e.target.value[0]:true})
@@ -101,13 +115,17 @@ export default class SingleRestaurant extends Component {
     var dish_name = item.split(",")[0]
     // if(!this.state.dish_name)
     // {
-      this.setState(prevState => ({...prevState,cart: prevState.cart.concat(item)})) 
+      this.setState(prevState => ({
+        ...prevState,
+        cart: prevState.cart.concat(item),
+
+      })) 
     // }
     // else
     // {
     //   //push out the item from the array
     // }
-    debugger
+  
   }
   
 }
