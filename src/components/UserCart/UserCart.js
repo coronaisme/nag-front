@@ -11,7 +11,7 @@ export default class UserCart extends React.Component
     render()
     {
         return(
-            <div> Props : {this.props}
+            <div> Props : {this.props.cart[0].split(",")[0]}
                 {console.log(this.props)}
             </div>
         )
