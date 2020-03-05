@@ -11,49 +11,65 @@ export default class UserCart extends React.Component
     state = {total:null,item:[]}
 
     componentDidMount()
-    {
+    {   var tot = 0;
         if(this.props.cart.length > 0)
         {
             this.props.cart.map(item => {
-                // var qty = 1;
                 var name = item.split(",")[0]
                 var price = parseFloat(item.split(",")[item.split(",").length-1].slice(1))
-                // let string_price = item.split(",")[item.split(",").length-1]
-                // var item_total = ;
-                var item_details = {qty:1,name:name,price:price}
-                this.setState(prevState => ({...prevState,item:prevState.item.concat(item_details)}))
+                var item_details = {qty:1,name:name,single_price:price,item_price:price}
+                tot += price
+                this.setState(prevState => ({...prevState,item:prevState.item.concat(item_details),total:tot}))
                 return null
                 })
         }
     }
 
+    handleChange = (event) => {
+        var tot = 0;
+        var name = event.target.name;
+        var value = event.target.value
+        var state_items = this.state.item
+        var changed_item = state_items.filter(item => {
+            if (item.name == name){
+                if (parseInt(value) <= 0)
+                {
+                    item.qty = 0
+                    item.item_price = item.qty * item.single_price
+                }
+                else
+                {
+                    item.qty = parseInt(value)
+                    item.item_price = item.qty * item.single_price
+                }
+            }
+            if (item.qty === 0)
+            {
+                return null
+            }
+            tot += item.item_price
+            return item
+        })
+        this.setState(prevState => ({...prevState,item:changed_item,total:tot}))
+    }
+
     render()
     {
+       
         return(
-            <div>
-                <table> <th><td>Quantity</td><td>Item Name</td><td>Price</td></th><tbody>
+            <div> 
+                <table> <th><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></th><tbody>
                 {this.state.item.map(singleitem => {
                     return (<tr>
-                       <td> <input type="number" value={singleitem.qty} on={this.handleChange} /></td>
+                       <td> <input type="number" placeholder={singleitem.qty} onChange={this.handleChange} name={singleitem.name}/></td>
                        <td>{singleitem.name} </td>
-                    <td>{singleitem.price}</td>
+                    <td>{singleitem.single_price}</td>
+                    <td>{singleitem.item_price}</td>
                     </tr>)
                 })}
                 </tbody></table>
+                GRAND TOTAL = {this.state.total}
             </div>
         )
     }
-
-    handleChange = () => {
-        debugger
-    }
 }
-
-// {
-//     "cart": [
-//       "Coconut Juice,,$3.00",
-//       "Green Mussel,Cooked green mussel with ponzu sauce, topped with tobiko and green onion. Served cold.,$5.00",
-//       "Pineapple Fried Rice,Wok fried rice with choice of meat, egg, tomatoes, onion, pineapple, raisin, and Cashew nuts.,$9.95",
-//       "Ika Sugatayaki,Grilled whole squid with Japanese mayo or spicy and sour sauce.,$12.00"
-//     ]
-//   }
