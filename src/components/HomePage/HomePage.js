@@ -24,6 +24,8 @@ export default class HomePage extends Component {
     if (!token) {
       this.props.history.push('/login');
     }
+
+   
   }
   
   state = { restaurant: null }
@@ -48,7 +50,10 @@ export default class HomePage extends Component {
 				restaurant: null
 			}
 		})
-	}
+  }
+  
+
+  
 
   render() {
     return(

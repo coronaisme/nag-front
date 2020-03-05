@@ -13,7 +13,7 @@ export default class SignUp extends Component {
 
 
   handleSubmit = (e) => {
-    
+    console.log(e.target.city.value)
       e.preventDefault()
       e.persist()
 
@@ -50,84 +50,92 @@ export default class SignUp extends Component {
         <Header as='h2' color='blue' textAlign='center'>
         Sign Up Here!
       </Header>
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           {/* username */}
           {/* <div class="ui field"> */}
-        <Form controlId="username" bsSize="large">
+        {/* <Form controlId="username" bsSize="large"> */}
           <ControlLabel>Username: </ControlLabel>
           <Form.Input
             autoFocus
+            name="username"
             placeholder="username"
             type="username"
           />
-        </Form>
+        {/* </Form> */}
   
           {/* </div> */}
         {/* password */}
-        <Form controlId="password" bsSize="large">
+        {/* <Form controlId="password" bsSize="large"> */}
           <ControlLabel>Password: </ControlLabel>
           <Form.Input
             autoFocus
+            name="password"
             placeholder="password"
             type="password"
             // value={username}
           />
-        </Form> 
+        {/* </Form>  */}
         {/* email */}
-        <Form controlId="email" bsSize="large">
+        {/* <Form controlId="email" bsSize="large"> */}
           <ControlLabel>Email Address: </ControlLabel>
           <Form.Input
             autoFocus
+            name="email"
             placeholder="email"
             type="email"
             // value={username}
           />
-        </Form> 
+        {/* </Form>  */}
         {/* address 1  */}
-        <Form controlId="address_1" bsSize="large">
+        {/* <Form controlId="address_1" bsSize="large"> */}
           <ControlLabel>Prefered Adress: </ControlLabel>
           <Form.Input
             autoFocus
+            name="address_1"
             placeholder="address_1"
             type="address_1"
             // value={username}
           />
-        </Form> 
+        {/* </Form>  */}
           {/* address 2 */}
-        <Form controlId="address_2" bsSize="large">
+        {/* <Form controlId="address_2" bsSize="large"> */}
           <ControlLabel>Apt/Suite Number: </ControlLabel>
           <Form.Input
+            name="address_2"
             autoFocus
             placeholder="address_2"
             type="address_2"
             // value={username}
           />
-        </Form> 
+        {/* </Form>  */}
           {/* city */}
-        <Form controlId="city" bsSize="large">
+        {/* <Form controlId="city" bsSize="large"> */}
           <ControlLabel>City: </ControlLabel>
           <Form.Input
             autoFocus
+            name="city"
             placeholder="city"
             type="city"
             // value={username}
           />
-        </Form> 
+        {/* </Form>  */}
            {/* state */}
-        <Form controlId="state" bsSize="large">
+        {/* <Form controlId="state" bsSize="large"> */}
           <ControlLabel>State: </ControlLabel>
           <Form.Input
             autoFocus
+            name="state"
             placeholder="state"
             type="state"
             // value={username}
           />
-        </Form> 
+        {/* </Form>  */}
           {/* zipcode */}
-        <Form controlId="zipcode" bsSize="large">
+        {/* <Form controlId="zipcode" bsSize="large"> */}
           <ControlLabel>Zipcode: </ControlLabel>
           <Form.Input
             autoFocus
+            name="zipcode"
             placeholder="zipcode"
             type="tel"
             maxLength="5"
@@ -135,7 +143,7 @@ export default class SignUp extends Component {
            
             // value={username}
           />
-        </Form> 
+        {/* </Form>  */}
         <br/>
         <Button block bsSize="large" fluid type="submit" >
           SignUp
@@ -146,7 +154,7 @@ export default class SignUp extends Component {
         </Button>
         
         <p>Upon succesful sign up you will be prompted to Login with your username and password</p>
-        </form>
+        </Form>
       </div>
       </Grid>
     )

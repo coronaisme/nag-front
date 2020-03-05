@@ -53,6 +53,7 @@ export default class UserCart extends React.Component
         })
         this.setState(prevState => ({...prevState,item:changed_item,total:tot}))
     }
+
     
     render()
     {
