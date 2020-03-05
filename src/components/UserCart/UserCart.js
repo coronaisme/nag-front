@@ -11,7 +11,8 @@ export default class UserCart extends React.Component
     render()
     {
         return(
-            <div> "Inside Cart"
+            <div> Props : {this.props}
+                {console.log(this.props)}
             </div>
         )
     }
