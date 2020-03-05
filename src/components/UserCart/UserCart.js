@@ -11,7 +11,9 @@ export default class UserCart extends React.Component
     render()
     {
         return(
-            <div> "Inside Cart"
+            <div> 
+                {console.log(this.props.cart)}
+                {this.props.cart.map(i => <li key={Math.random()}>{i.split(",")}</li>)}
             </div>
         )
     }
