@@ -8,29 +8,44 @@ import React from 'react';
 
 export default class UserCart extends React.Component
 {
+    state = {total:null,item:[]}
+
+    componentDidMount()
+    {
+        if(this.props.cart.length > 0)
+        {
+            this.props.cart.map(item => {
+                // var qty = 1;
+                var name = item.split(",")[0]
+                var price = parseFloat(item.split(",")[item.split(",").length-1].slice(1))
+                // let string_price = item.split(",")[item.split(",").length-1]
+                // var item_total = ;
+                var item_details = {qty:1,name:name,price:price}
+                this.setState(prevState => ({...prevState,item:prevState.item.concat(item_details)}))
+                return null
+                })
+        }
+    }
+
     render()
     {
         return(
             <div>
-
-                {this.props.cart.length > 0 ? 
-                
-                    this.props.cart.map(item => {
-                    console.log(item)
-                    var name = item.split(",")[0]
-                    var price =item[item.split(",").length -1]
-                    debugger
-                    // return <input type="number"/>  <p>{name }</p>
-                    console.log(name,price)
-                })
-                
-                :
-                <div>
-                Your Cart is Empty. 
-                </div>
-                }
+                <table> <th><td>Quantity</td><td>Item Name</td><td>Price</td></th><tbody>
+                {this.state.item.map(singleitem => {
+                    return (<tr>
+                       <td> <input type="number" value={singleitem.qty} on={this.handleChange} /></td>
+                       <td>{singleitem.name} </td>
+                    <td>{singleitem.price}</td>
+                    </tr>)
+                })}
+                </tbody></table>
             </div>
         )
+    }
+
+    handleChange = () => {
+        debugger
     }
 }
 
