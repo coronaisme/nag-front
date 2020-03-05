@@ -3,3 +3,16 @@
 //delivery time(?) are we actually basing this off something or just bsing? If we are bsing, do we really care about the delivery part?
 //Each item has a button to remove from cart, price must be adjusted
 //button at bottom of page to review and pay for items -> takes user to ReviewCart
+
+import React from 'react';
+
+export default class UserCart extends React.Component
+{
+    render()
+    {
+        return(
+            <div> "Inside Cart"
+            </div>
+        )
+    }
+}

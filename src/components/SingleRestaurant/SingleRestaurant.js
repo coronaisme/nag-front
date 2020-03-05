@@ -5,7 +5,9 @@ import "./SingleRestaurant.css"
 
 export default class SingleRestaurant extends Component {
 
-  
+  state = {cart:[]}
+
+ 
 
   render() {
     
@@ -65,15 +67,47 @@ export default class SingleRestaurant extends Component {
       <br />
       <br />
       <div className="menuList">
-        {console.log(menu)}
+        <form onSubmit = {this.handleSubmit}>
         {menu.map(dish => {
-         return <ul className="menuItems" key={dish.item_id}>         
-                {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString} 
+          // {this.setState({dish.menu_item_name:false})}
+         return <ul className="menuItem" key={dish.item_id}>         
+               {/* <input type="checkbox" checked={this.state.isChecked} onClick={this.addCart} value={`[{0:${dish.menu_item_name}},{1:${dish.menu_item_description}},{2:${dish.menu_item_pricing[0].priceString}}]`}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString}  */}
+               <input type="checkbox" name={dish.item_id} onClick={this.addCart} 
+               value={[dish.menu_item_name,dish.menu_item_description,dish.menu_item_pricing[0].priceString]}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString} 
                 <br/>     
                 </ul>
+                
         })}
+        <input type="submit" value="Add to Cart"/>
+        </form>
       </div>
     </div>
     )
   }
+
+  handleSubmit()
+  {
+    console.log("Inside submit")
+    debugger
+  }
+
+  addCart = (e) =>
+  {
+    debugger
+    e.persist();
+    // this.setState(prevState => ({...prevState,isChecked:!prevState.isChecked}))
+    // this.setState({e.target.value[0]:true})
+    var item = e.target.value
+    var dish_name = item.split(",")[0]
+    // if(!this.state.dish_name)
+    // {
+      this.setState(prevState => ({...prevState,cart: prevState.cart.concat(item)})) 
+    // }
+    // else
+    // {
+    //   //push out the item from the array
+    // }
+    debugger
+  }
+  
 }
