@@ -5,7 +5,10 @@ import UserCart from "../UserCart/UserCart";
 
 export default class SingleRestaurant extends Component {
 
-  state = { cart:[],showCart:false }
+  state = { 
+    cart:[],
+    showCart:false 
+  }
 
   render() {
     

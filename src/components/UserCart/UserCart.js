@@ -5,6 +5,7 @@
 //button at bottom of page to review and pay for items -> takes user to ReviewCart
 
 import React from 'react';
+import "./UserCart.css"
 
 export default class UserCart extends React.Component
 {
@@ -52,9 +53,11 @@ export default class UserCart extends React.Component
         })
         this.setState(prevState => ({...prevState,item:changed_item,total:tot}))
     }
-
+    
     render()
     {
+        // const grandTotal = this.state.total
+        // const betterTotal = grandTotal.toFixed(2)
         return(
             <div> 
                 <table> <th><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></th><tbody>

@@ -8,6 +8,7 @@ import api from "./api.js"
 
 
 
+
 class App extends React.Component{
 
   state = { 
@@ -54,7 +55,6 @@ class App extends React.Component{
           <Route path="/signup" render={(routerProps) => {
             return <SignUp {...routerProps} />
           }}/>
-
 
           <Route path='/' render={(routerProps) => {
             const loggedIn = !!this.state.auth.currentUser.id;

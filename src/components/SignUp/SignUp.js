@@ -1,7 +1,8 @@
 //sign up form -> goes to HomePage
 import React, {Component} from 'react';
 // import HomePage from '../HomePage/HomePage.js';
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import "./SignUp.css"
 // import { queryByDisplayValue } from '@testing-library/react';
 
@@ -33,88 +34,99 @@ export default class SignUp extends Component {
       })
      
     }
+
+    handleLoginClick = () => {
+      this.props.history.push('/login')
+    }
   
 
   render() {
 
     return (
+
+      
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
       <div className="SignUp">
-        <h3>Sign Up Here!</h3>
+        <Header as='h2' color='marine blue' textAlign='center'>
+        Sign Up Here!
+      </Header>
         <form onSubmit={this.handleSubmit}>
           {/* username */}
-        <FormGroup controlId="username" bsSize="large">
+          {/* <div class="ui field"> */}
+        <Form controlId="username" bsSize="large">
           <ControlLabel>Username: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="username"
             type="username"
-            // value={username}
           />
-        </FormGroup>
+        </Form>
+  
+          {/* </div> */}
         {/* password */}
-        <FormGroup controlId="password" bsSize="large">
+        <Form controlId="password" bsSize="large">
           <ControlLabel>Password: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="password"
             type="password"
             // value={username}
           />
-        </FormGroup> 
+        </Form> 
         {/* email */}
-        <FormGroup controlId="email" bsSize="large">
+        <Form controlId="email" bsSize="large">
           <ControlLabel>Email Address: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="email"
             type="email"
             // value={username}
           />
-        </FormGroup> 
+        </Form> 
         {/* address 1  */}
-        <FormGroup controlId="address_1" bsSize="large">
+        <Form controlId="address_1" bsSize="large">
           <ControlLabel>Prefered Adress: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="address_1"
             type="address_1"
             // value={username}
           />
-        </FormGroup> 
+        </Form> 
           {/* address 2 */}
-        <FormGroup controlId="address_2" bsSize="large">
+        <Form controlId="address_2" bsSize="large">
           <ControlLabel>Apt/Suite Number: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="address_2"
             type="address_2"
             // value={username}
           />
-        </FormGroup> 
+        </Form> 
           {/* city */}
-        <FormGroup controlId="city" bsSize="large">
+        <Form controlId="city" bsSize="large">
           <ControlLabel>City: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="city"
             type="city"
             // value={username}
           />
-        </FormGroup> 
+        </Form> 
            {/* state */}
-        <FormGroup controlId="state" bsSize="large">
+        <Form controlId="state" bsSize="large">
           <ControlLabel>State: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="state"
             type="state"
             // value={username}
           />
-        </FormGroup> 
+        </Form> 
           {/* zipcode */}
-        <FormGroup controlId="zipcode" bsSize="large">
+        <Form controlId="zipcode" bsSize="large">
           <ControlLabel>Zipcode: </ControlLabel>
-          <FormControl
+          <Form.Input
             autoFocus
             placeholder="zipcode"
             type="tel"
@@ -123,14 +135,132 @@ export default class SignUp extends Component {
            
             // value={username}
           />
-        </FormGroup> 
+        </Form> 
         <br/>
-        <Button block bsSize="large"  type="submit" >
+        <Button block bsSize="large" fluid type="submit" >
           SignUp
         </Button>
+       <br/>
+        <Button block bsSize="large" fluid type="click" onClick={this.handleLoginClick} >
+          Login
+        </Button>
+        
         <p>Upon succesful sign up you will be prompted to Login with your username and password</p>
         </form>
       </div>
+      </Grid>
     )
   }
 }
+
+
+
+
+
+
+
+// <form class="ui form">
+//   <h4 class="ui dividing header">User Information</h4>
+//   <div class="field">
+//     <label>Name</label>
+//     
+//       <div class="field">
+//         <input type="text" name="username" placeholder="Username">
+//       </div>
+//  <label>Password</label> 
+//  <div class="field">
+//         <input type="text" name="password" placeholder="Password">
+//       </div>
+//<label>Email</label> 
+//   <div class="field">
+//         <input type="text" name="email" placeholder="Email">
+//       </div>
+//   </div> 
+//   <div class="field">
+//     <label>Billing Address</label>
+//     <div class="fields">
+//       <div class="twelve wide field">
+//         <input type="text" name="address_1" placeholder="Street Address">
+//       </div>
+//       <div class="four wide field">
+//         <input type="text" name="address_2" placeholder="Apt #">
+//       </div>
+//     </div>
+//   </div>
+//  //states
+//     <div class="field">
+//       <label>State</label>
+//       <select class="ui fluid dropdown">
+//         <option value="">State</option>
+//     <option value="AL">Alabama</option>
+//     <option value="AK">Alaska</option>
+//     <option value="AZ">Arizona</option>
+//     <option value="AR">Arkansas</option>
+//     <option value="CA">California</option>
+//     <option value="CO">Colorado</option>
+//     <option value="CT">Connecticut</option>
+//     <option value="DE">Delaware</option>
+//     <option value="DC">District Of Columbia</option>
+//     <option value="FL">Florida</option>
+//     <option value="GA">Georgia</option>
+//     <option value="HI">Hawaii</option>
+//     <option value="ID">Idaho</option>
+//     <option value="IL">Illinois</option>
+//     <option value="IN">Indiana</option>
+//     <option value="IA">Iowa</option>
+//     <option value="KS">Kansas</option>
+//     <option value="KY">Kentucky</option>
+//     <option value="LA">Louisiana</option>
+//     <option value="ME">Maine</option>
+//     <option value="MD">Maryland</option>
+//     <option value="MA">Massachusetts</option>
+//     <option value="MI">Michigan</option>
+//     <option value="MN">Minnesota</option>
+//     <option value="MS">Mississippi</option>
+//     <option value="MO">Missouri</option>
+//     <option value="MT">Montana</option>
+//     <option value="NE">Nebraska</option>
+//     <option value="NV">Nevada</option>
+//     <option value="NH">New Hampshire</option>
+//     <option value="NJ">New Jersey</option>
+//     <option value="NM">New Mexico</option>
+//     <option value="NY">New York</option>
+//     <option value="NC">North Carolina</option>
+//     <option value="ND">North Dakota</option>
+//     <option value="OH">Ohio</option>
+//     <option value="OK">Oklahoma</option>
+//     <option value="OR">Oregon</option>
+//     <option value="PA">Pennsylvania</option>
+//     <option value="RI">Rhode Island</option>
+//     <option value="SC">South Carolina</option>
+//     <option value="SD">South Dakota</option>
+//     <option value="TN">Tennessee</option>
+//     <option value="TX">Texas</option>
+//     <option value="UT">Utah</option>
+//     <option value="VT">Vermont</option>
+//     <option value="VA">Virginia</option>
+//     <option value="WA">Washington</option>
+//     <option value="WV">West Virginia</option>
+//     <option value="WI">Wisconsin</option>
+//     <option value="WY">Wyoming</option>
+//       </select>
+//     </div>
+//    <div class="field">
+//         <input type="text" name="city" placeholder="City">
+//       </div>
+//        <div class="field">
+//         <input type="number" name="zipcode" placeholder="Zipcode">
+//       </div>
+
+//   <div class="ui button" tabindex="0">Sign Up</div>
+// </form>
+
+
+
+
+
+
+
+
+//working 
+
