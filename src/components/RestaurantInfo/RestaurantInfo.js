@@ -25,6 +25,7 @@ export default class RestaurantInfo extends Component {
           </div>
           <div className="content">
              <div className="header">{ restaurant.restaurant_name }</div>
+             
              {restaurant.cuisines[0]}<br/>
              {restaurant.address.street}
           </div>

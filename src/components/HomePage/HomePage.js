@@ -17,18 +17,35 @@ import SingleRestaurant from '../SingleRestaurant/SingleRestaurant'
 
 export default class HomePage extends Component {
 
-  state = {myprofile:false}
+  // state = {myprofile:false}
+  state = { 
+    myprofile: false,
+    allRestaurants: [],
+    restaurant: null
+   }
 
   componentDidMount() {
     const token = localStorage.getItem('token');
     if (!token) {
       this.props.history.push('/login');
     }
-
-   
+    fetch(`https://us-restaurant-menus.p.rapidapi.com/restaurants/zip_code/${this.props.current_user.zipcode}?page=1`, {
+	  "method": "GET",
+	  "headers": {
+		"x-rapidapi-host": "us-restaurant-menus.p.rapidapi.com",
+		"x-rapidapi-key": "8d745e65dcmsh12b93a292d573cdp1afde5jsnef2ba2a24071"
+	  }
+  })
+.then(res => res.json()).then(data => 
+  this.setState(previousState => {
+    return {
+      ...previousState,
+      allRestaurants: data.result.data
+    }
+  }, () => console.log(this.state.allRestaurants))
+  )
   }
   
-  state = { restaurant: null }
 
   handleClick = () => {
     this.setState(prevState => ({myprofile:!prevState.myprofile}))
@@ -73,9 +90,9 @@ export default class HomePage extends Component {
         :
         <Card.Group centered itemsPerRow={4}>
 
-        {this.state.restaurant ? <SingleRestaurant restaurant={this.state.restaurant} onBackButtonClick={this.onBackButtonClick}/>
+        {this.state.restaurant ? <SingleRestaurant  restaurant={this.state.restaurant} onBackButtonClick={this.onBackButtonClick}/>
           :
-        data.result.data.map(r => <RestaurantInfo key={r.restaurant_id} restaurant={r} onRestaurantClick={this.onRestaurantClick} />)}
+        this.state.allRestaurants.map(r => <RestaurantInfo key={r.restaurant_id} restaurant={r} onRestaurantClick={this.onRestaurantClick}  />)}
         </Card.Group>
         }
       </div>
