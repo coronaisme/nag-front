@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./SingleRestaurant.css"
 import UserCart from "../UserCart/UserCart";
+import { Button } from 'semantic-ui-react'
 
 export default class SingleRestaurant extends Component {
 
@@ -92,7 +93,7 @@ export default class SingleRestaurant extends Component {
             return null
           }
         })}
-        <input type="submit" value="Add to Cart"/>
+        <Button type="submit" value="Add to Cart"/>
         </form>
       </div> 
       Total items in the cart: {this.state.cart.length}
