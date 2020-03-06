@@ -12,6 +12,14 @@ export default class UserCart extends React.Component
 {
     state = {total:null,item:[]}
 
+    handlePay = () => {
+        console.log("ping")
+    }    
+
+    handleToken = () => {
+        return Math.random()
+    }
+
     componentDidMount()
     {   var tot = 0;
         if(this.props.cart.length > 0)
@@ -62,8 +70,8 @@ export default class UserCart extends React.Component
             <div> 
                 <table> <thead><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></thead><tbody>
                 {this.state.item.map(singleitem => {
-                    return (<tr>
-                       <td> <input type="number" placeholder={singleitem.qty} onChange={this.handleChange} name={singleitem.name}/></td>
+                    return (<tr key={Math.random()}>
+                       <td> <input type="number" key={Math.random()} placeholder={singleitem.qty} onChange={this.handleChange} name={singleitem.name}/></td>
                        <td>{singleitem.name}: </td>
                     <td>order/$ {singleitem.single_price.toFixed(2)}</td>
                     <td>total/$ {singleitem.item_price.toFixed(2)}</td>
@@ -74,8 +82,9 @@ export default class UserCart extends React.Component
 
                 <br></br>
                     <StripeCheckout
+                        onSubmit={this.handlePay}
                         stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
-                        // token={handleToken}
+                        token={this.handleToken}
                         amount={this.state.total * 100}
                         name="Total Items"
                         billingAddress
