@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import menuData from '../../SampleMenu'
 import "./SingleRestaurant.css"
 import UserCart from "../UserCart/UserCart";
 import { Button } from 'semantic-ui-react';
@@ -50,7 +49,7 @@ export default class SingleRestaurant extends Component {
             <img alt="restaurant" className="ui large image bordered" src={'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.eatouteatwell.com%2Fwp-content%2Fuploads%2F2014%2F01%2Frestaurant-front.jpg&f=1&nofb=1'} />
           </div>
           <div className="centered column">
-            {/* {console.log(restaurant, "one restaurant")} */}
+           
             <h2>{restaurant.restaurant_name}</h2>
             <p>
               <strong>Address: </strong><br/>
@@ -83,14 +82,14 @@ export default class SingleRestaurant extends Component {
         <form onSubmit = {this.handleSubmit}>
           
         {this.state.menu && this.state.menu.map(dish => {
-          // console.log(dish.menu_item_pricing, "pricing")
+  
           if(dish.menu_item_pricing && dish.menu_item_pricing.length > 0) {
          return <ul className="menuItem" key={dish.item_id}>         
                 <input type="checkbox" onClick={this.addCart} name={[dish.menu_item_name,dish.menu_item_description,dish.menu_item_pricing[0].priceString]}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString} 
                 <br/>   
                 </ul>   
           } else {
-            console.log("no array")
+            
             return null
           }
         })}
