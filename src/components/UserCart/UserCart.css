@@ -8,6 +8,7 @@ table {
 }
 
 thead, td {
+  font-style: italic bold;
   text-align: justify;
   padding: 8px;
 }

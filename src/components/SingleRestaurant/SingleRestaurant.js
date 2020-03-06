@@ -40,7 +40,7 @@ export default class SingleRestaurant extends Component {
     return (
       <div>
       {this.state.showCart ? 
-      ( this.state.cart.length > 0 ?  <UserCart cart={this.state.cart} current_user={this.props.current_user} rest_addr={restaurant.address.formatted}/> :  this.setState(prevState => ({...prevState,showCart:!prevState.showCart})) )
+      ( this.state.cart.length > 0 ?  <UserCart cart={this.state.cart} current_user={this.props.current_user} rest_addr={restaurant.restaurant_name}/> :  this.setState(prevState => ({...prevState,showCart:!prevState.showCart})) )
       :
       <div className="ui segment centered">
       <div className="ui two column centered grid">
@@ -80,19 +80,22 @@ export default class SingleRestaurant extends Component {
       </div><br /><br />
       <div className="menuList">
         <form onSubmit = {this.handleSubmit}>
-          
         {this.state.menu && this.state.menu.map(dish => {
-  
+          
           if(dish.menu_item_pricing && dish.menu_item_pricing.length > 0) {
-         return <ul className="menuItem" key={dish.item_id}>         
+            return <ul className="menuItem" key={dish.item_id}>         
                 <input type="checkbox" onClick={this.addCart} name={[dish.menu_item_name,dish.menu_item_description,dish.menu_item_pricing[0].priceString]}/> <span> </span>  {dish.menu_item_name}:  {dish.menu_item_description}    {dish.menu_item_pricing[0].priceString} 
                 <br/>   
                 </ul>   
-          } else {
+          } 
+          else {
+              return null
+            }
             
-            return null
-          }
-        })}
+          }  )} 
+          {(this.state.menu.length === 0) ?  <h4>"This restaurant does not provide any menu."</h4> :  console.log(this.state.menu)}
+
+
         <Button type="submit" value="Add to Cart">Add to Cart</Button> 
         </form>
       </div> 

@@ -10,7 +10,7 @@ import StripeCheckout from "react-stripe-checkout";
 import Display from "./Display"
 export default class UserCart extends React.Component
 {
-    state = {total:null,item:[],show_message:false,msg=""}
+    state = {total:null,item:[],show_message:false,msg:""}
 
     handlePay = () => {
         var today = new Date();
@@ -102,7 +102,9 @@ export default class UserCart extends React.Component
                     </tr>)
                 })}
                 </tbody></table>
-                GRAND TOTAL = ${this.state.total}
+                Aaron Fee = 4% of ${((this.state.total * 100) * (0.1 * 10)) / 100}<br/>
+                Delivery Fee = $ 3.99 <br/>
+                GRAND TOTAL = ${(((((this.state.total) + 3.99) * 1.04) * 100) * (0.1 * 10)) / 100 }<br/>
                 <br></br>
                     <StripeCheckout
                         closed={this.handlePay}

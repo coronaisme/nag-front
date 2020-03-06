@@ -56,11 +56,11 @@ class UserInfo extends React.Component
                 <div> 
                     <h2>Past orders</h2>
                     {this.state.user_orders.map(order => {
-                        return <div>
+                        return <div><ul>
                         <h5> Order Status : {order.status}<br/>
                              Delivered to : {order.delivery_address}<br/>
                              Amount Paid : {order.fee}<br/>
-                        </h5></div>
+                             </h5></ul></div>
                     })}
                 </div>}
              </div>
