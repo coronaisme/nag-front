@@ -6,6 +6,7 @@
 
 import React from 'react';
 import "./UserCart.css"
+import StripeCheckout from "react-stripe-checkout";
 
 export default class UserCart extends React.Component
 {
@@ -70,7 +71,17 @@ export default class UserCart extends React.Component
                 })}
                 </tbody></table>
                 GRAND TOTAL = ${this.state.total}
+                <br></br>
+                    <StripeCheckout
+                        stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
+                        // token={handleToken}
+                        amount={this.state.total * 100}
+                        name="Total Items"
+                        billingAddress
+                        shippingAddress
+                    />
             </div>
+
         )
     }
 }
