@@ -40,7 +40,7 @@ export default class SingleRestaurant extends Component {
     return (
       <div>
       {this.state.showCart ? 
-      ( this.state.cart.length > 0 ?  <UserCart cart={this.state.cart}/> :  this.setState(prevState => ({...prevState,showCart:!prevState.showCart})) )
+      ( this.state.cart.length > 0 ?  <UserCart cart={this.state.cart} current_user={this.props.current_user} rest_addr={restaurant.address.formatted}/> :  this.setState(prevState => ({...prevState,showCart:!prevState.showCart})) )
       :
       <div className="ui segment centered">
       <div className="ui two column centered grid">

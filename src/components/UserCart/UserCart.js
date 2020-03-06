@@ -7,14 +7,36 @@
 import React from 'react';
 import "./UserCart.css"
 import StripeCheckout from "react-stripe-checkout";
-
+import Display from "./Display"
 export default class UserCart extends React.Component
 {
-    state = {total:null,item:[]}
+    state = {total:null,item:[],show_message:false}
 
     handlePay = () => {
-        console.log("ping")
-    }    
+        var today = new Date();
+        var order_date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var order_time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var user_details = {}
+        const token = localStorage.getItem('token')
+        console.log(this.props.current_user)
+        if (token)
+        {
+            fetch(`http://localhost:3000/user/${this.props.current_user.id}`,
+            {headers:{ 'Content-Type': 'application/json',Accept: 'application/json',Authorization: token}})
+            .then(resp => resp.json())
+            .then(data => user_details = data.user_details)
+        }
+        else { this.props.history.push('/login'); }
+       
+        var data = {delivery_address:(user_details.address_one,user_details.address_two,user_details.city,user_details.zipcode) ,pickup_address:(this.props.rest_addr) , order_date:order_date , order_time: order_time , delivery_date:order_date , delivery_time: null, fee:(this.state.total) , status: "delivered" , user_id: (this.props.current_user.id), payment_info_id:9 }
+        fetch("http://localhost:3000/new_order",{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json',Accept: 'application/json',Authorization: ""},
+        body: JSON.stringify(data)
+        }).then(resp => {if (resp.status === 200){ this.setState(prevState => ({...prevState,show_message:!prevState.show_message})) }
+                        else {}})
+        .then(data => console.log(data))
+      }    
 
     handleToken = () => {
         return Math.random()
@@ -67,6 +89,8 @@ export default class UserCart extends React.Component
     render()
     {
         return(
+            <div>
+                {this.state.show_message ? <Display msg={this.state.show_message}/> :
             <div> 
                 <table> <thead><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></thead><tbody>
                 {this.state.item.map(singleitem => {
@@ -81,7 +105,7 @@ export default class UserCart extends React.Component
                 GRAND TOTAL = ${this.state.total}
                 <br></br>
                     <StripeCheckout
-                        onSubmit={this.handlePay}
+                        closed={this.handlePay}
                         stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
                         token={this.handleToken}
                         amount={this.state.total * 100}
@@ -90,7 +114,7 @@ export default class UserCart extends React.Component
                         shippingAddress
                     />
             </div>
-
+            }</div>
         )
     }
 }

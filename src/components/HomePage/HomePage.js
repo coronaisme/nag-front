@@ -89,7 +89,7 @@ export default class HomePage extends Component {
         :
         <Card.Group centered itemsPerRow={4}>
 
-        {this.state.restaurant ? <SingleRestaurant  restaurant={this.state.restaurant} onBackButtonClick={this.onBackButtonClick}/>
+        {this.state.restaurant ? <SingleRestaurant current_user={this.props.current_user} restaurant={this.state.restaurant} onBackButtonClick={this.onBackButtonClick}/>
           :
         this.state.allRestaurants.map(r => <RestaurantInfo key={r.restaurant_id} restaurant={r} onRestaurantClick={this.onRestaurantClick}  />)}
         </Card.Group>
