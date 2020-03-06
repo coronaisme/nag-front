@@ -17,7 +17,6 @@ import SingleRestaurant from '../SingleRestaurant/SingleRestaurant'
 
 export default class HomePage extends Component {
 
-  // state = {myprofile:false}
   state = { 
     myprofile: false,
     allRestaurants: [],
