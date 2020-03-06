@@ -10,7 +10,7 @@ import StripeCheckout from "react-stripe-checkout";
 import Display from "./Display"
 export default class UserCart extends React.Component
 {
-    state = {total:null,item:[],show_message:false}
+    state = {total:null,item:[],show_message:false,msg=""}
 
     handlePay = () => {
         var today = new Date();
@@ -33,8 +33,8 @@ export default class UserCart extends React.Component
         method: 'POST',
         headers: {'Content-Type': 'application/json',Accept: 'application/json',Authorization: ""},
         body: JSON.stringify(data)
-        }).then(resp => {if (resp.status === 200){ this.setState(prevState => ({...prevState,show_message:!prevState.show_message})) }
-                        else {}})
+        }).then(resp => { if (resp.status === 200) { this.setState(prevState => ({...prevState,show_message:!prevState.show_message,msg:"success"})) }
+                        else {this.setState(prevState => ({...prevState,show_message:!prevState.show_message,msg:"failure"}))} })
         .then(data => console.log(data))
       }    
 
@@ -90,7 +90,7 @@ export default class UserCart extends React.Component
     {
         return(
             <div>
-                {this.state.show_message ? <Display msg={this.state.show_message}/> :
+                {this.state.show_message ? <Display msg={this.state.msg}/> :
             <div> 
                 <table> <thead><td>Quantity</td><td>Item Name</td><td>Single Price</td><td>Price</td></thead><tbody>
                 {this.state.item.map(singleitem => {

@@ -6,7 +6,11 @@ export default class Display extends React.Component
     {
         return(
             <div>
-                Order successfully placed!
+                 {this.props.msg === "success" ? 
+                 "Order placed successfully !"
+                :
+                "Order cannot be placed at this moment. Contact the support team to help you out."
+                 }
             </div>
         )
     }
