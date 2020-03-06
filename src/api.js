@@ -8,10 +8,6 @@ const headers = {
   Authorization: token
 };
 
-// const getRestaurants = () => {
-//   return fetch(`${API}/restaurants`, { headers: headers }).then(res => res.json());
-// }
-
 const login = (username, password) => {
   return fetch(`${API}/auth/`, {
     method: 'POST',
@@ -33,8 +29,4 @@ export default {
     login: login, 
     getCurrentUser: getCurrentUser
   }
-//   ,
-//   restaurants: {
-//     getRestaurants
-//   }
 }

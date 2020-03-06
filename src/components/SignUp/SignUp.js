@@ -7,13 +7,7 @@ import "./SignUp.css"
 
 
 export default class SignUp extends Component {
-
-
-
-
-
   handleSubmit = (e) => {
-    console.log(e.target.city.value)
       e.preventDefault()
       e.persist()
       
@@ -51,9 +45,6 @@ export default class SignUp extends Component {
         Sign Up Here!
       </Header>
         <Form onSubmit={this.handleSubmit}>
-          {/* username */}
-          {/* <div class="ui field"> */}
-        {/* <Form controlId="username" bsSize="large"> */}
           <ControlLabel>Username: </ControlLabel>
           <Form.Input
             autoFocus
@@ -61,77 +52,48 @@ export default class SignUp extends Component {
             placeholder="username"
             type="username"
           />
-        {/* </Form> */}
-  
-          {/* </div> */}
-        {/* password */}
-        {/* <Form controlId="password" bsSize="large"> */}
           <ControlLabel>Password: </ControlLabel>
           <Form.Input
             autoFocus
             name="password"
             placeholder="password"
             type="password"
-            // value={username}
           />
-        {/* </Form>  */}
-        {/* email */}
-        {/* <Form controlId="email" bsSize="large"> */}
           <ControlLabel>Email Address: </ControlLabel>
           <Form.Input
             autoFocus
             name="email"
             placeholder="email"
             type="email"
-            // value={username}
           />
-        {/* </Form>  */}
-        {/* address 1  */}
-        {/* <Form controlId="address_1" bsSize="large"> */}
           <ControlLabel>Prefered Adress: </ControlLabel>
           <Form.Input
             autoFocus
             name="address_1"
             placeholder="address_1"
             type="address_1"
-            // value={username}
           />
-        {/* </Form>  */}
-          {/* address 2 */}
-        {/* <Form controlId="address_2" bsSize="large"> */}
           <ControlLabel>Apt/Suite Number: </ControlLabel>
           <Form.Input
             name="address_2"
             autoFocus
             placeholder="address_2"
             type="address_2"
-            // value={username}
           />
-        {/* </Form>  */}
-          {/* city */}
-        {/* <Form controlId="city" bsSize="large"> */}
           <ControlLabel>City: </ControlLabel>
           <Form.Input
             autoFocus
             name="city"
             placeholder="city"
             type="city"
-            // value={username}
           />
-        {/* </Form>  */}
-           {/* state */}
-        {/* <Form controlId="state" bsSize="large"> */}
           <ControlLabel>State: </ControlLabel>
           <Form.Input
             autoFocus
             name="state"
             placeholder="state"
             type="state"
-            // value={username}
           />
-        {/* </Form>  */}
-          {/* zipcode */}
-        {/* <Form controlId="zipcode" bsSize="large"> */}
           <ControlLabel>Zipcode: </ControlLabel>
           <Form.Input
             autoFocus
@@ -140,10 +102,7 @@ export default class SignUp extends Component {
             type="tel"
             maxLength="5"
             charSet="0123456789"
-           
-            // value={username}
           />
-        {/* </Form>  */}
         <br/>
         <Button block bsSize="large" fluid type="submit" >
           SignUp

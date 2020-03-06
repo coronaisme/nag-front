@@ -20,7 +20,7 @@ class UserInfo extends React.Component
             {headers:{ 'Content-Type': 'application/json',Accept: 'application/json',Authorization: token}})
             .then(resp => resp.json())
             .then(data => 
-                 this.setState({ user_details:data.user_details, user_cards: data.cards, user_orders: data.orders }, () => console.log(this.state)))
+                 this.setState({ user_details:data.user_details, user_cards: data.cards, user_orders: data.orders }))
         }
         else { this.props.history.push('/login'); }
     }
@@ -28,8 +28,6 @@ class UserInfo extends React.Component
     {   
         const user_details = this.state.user_details
         const cards = this.state.user_cards
-        // debugger
-        console.log(this.state)
         return(
             <div> 
                 <h2>Manage profile</h2>

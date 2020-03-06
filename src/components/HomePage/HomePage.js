@@ -41,7 +41,7 @@ export default class HomePage extends Component {
       ...previousState,
       allRestaurants: data.result.data
     }
-  }, () => console.log(this.state.allRestaurants))
+  })
   )
   }
   
