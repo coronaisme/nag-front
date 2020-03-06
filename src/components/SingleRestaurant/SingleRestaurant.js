@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import menuData from '../../SampleMenu'
 import "./SingleRestaurant.css"
 import UserCart from "../UserCart/UserCart";
 
@@ -89,7 +88,7 @@ export default class SingleRestaurant extends Component {
                 <br/>   
                 </ul>   
           } else {
-            console.log("no array")
+            
             return null
           }
         })}
