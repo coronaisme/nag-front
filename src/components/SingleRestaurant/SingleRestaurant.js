@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import menuData from '../../SampleMenu'
 import "./SingleRestaurant.css"
 import UserCart from "../UserCart/UserCart";
+import { Button } from 'semantic-ui-react';
 
 export default class SingleRestaurant extends Component {
 
@@ -74,7 +75,7 @@ export default class SingleRestaurant extends Component {
               <strong>{restaurant.hours ? restaurant.hours : "not available"}</strong>
             </div>
             <br />
-            <button className="ui button fluid" onClick={() => this.props.onBackButtonClick()}> All Restaurants </button>
+            <Button className="ui button fluid" onClick={() => this.props.onBackButtonClick()}> All Restaurants </Button>
           </div>
         </div>
       </div><br /><br />
@@ -93,7 +94,7 @@ export default class SingleRestaurant extends Component {
             return null
           }
         })}
-        <input type="submit" value="Add to Cart"/>
+        <Button type="submit" value="Add to Cart">Add to Cart</Button> 
         </form>
       </div> 
       Total items in the cart: {this.state.cart.length}
